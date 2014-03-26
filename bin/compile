@@ -4,7 +4,7 @@
 set -e
 set -o pipefail
 
-LUVIT_VERSION="0.4.0"
+[[ -n $LUVIT_VERSION ]] || LUVIT_VERSION="0.7.0"
 
 BUILD_DIR=$1
 CACHE_DIR=$2

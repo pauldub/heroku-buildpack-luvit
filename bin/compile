@@ -16,7 +16,7 @@ echo "-----> Fetching luvm from $LUVM_URL "
 mkdir -p /tmp/luvm
 pushd /tmp/luvm
 
-wget $LUVIT_URL
+wget $LUVM_URL
 tar xzvf master.tar.gz
 cat luvit-luvm-master/luvm.sh > /etc/profile.d/luvm.sh
 source /etc/profile.d/luvm.sh

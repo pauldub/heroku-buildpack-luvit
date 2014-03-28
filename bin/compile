@@ -18,15 +18,15 @@ pushd /tmp/luvm
 
 wget $LUVM_URL
 tar xzvf master.tar.gz
-cat luvit-luvm-master/luvm.sh > /etc/profile.d/luvm.sh
-source /etc/profile.d/luvm.sh
-
-popd
-rm -rf /tmp/luvm
-
+source luvit-luvm-master/luvm.sh 
 echo "-----> Installing luvit $LUVIT_VERSION "
 
 luvm install $LUVIT_VERSION
+luvm use $LUVIT_VERSION
 
-echo "export LUVIT_VERSION=$LUVIT_VERSION" >> /etc/profile.d/luvm.sh
-echo 'luvm use $LUVIT_VERSION' >> /etc/profile.d/luvm.sh
+mkdir -p /app/bin
+ln -s $(which luvit) /app/bin/luvit
+
+popd
+
+rm -rf /tmp/luvm

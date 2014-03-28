@@ -11,11 +11,22 @@ CACHE_DIR=$2
 
 cd $BUILD_DIR
 
-LUVIT_URL="https://github.com/downloads/Skomski/heroku-buildpack-luvit/luvit"
-echo "-----> Fetching Luvit version $LUVIT_VERSION"
-curl --silent -O --max-time 60 --location "$LUVIT_URL"
+LUVM_URL="https://github.com/dvv/luvit-luvm/archive/master.tar.gz"
+echo "-----> Fetching luvm from $LUVM_URL "
+mkdir -p /tmp/luvm
+pushd /tmp/luvm
 
-chmod +x luvit
+wget $LUVIT_URL
+tar xzvf master.tar.gz
+cat luvit-luvm-master/luvm.sh > /etc/profile.d/luvm.sh
+source /etc/profile.d/luvm.sh
 
-mkdir -p bin
-mv luvit bin/luvit
+popd
+rm -rf /tmp/luvm
+
+echo "-----> Installing luvit $LUVIT_VERSION "
+
+luvm install $LUVIT_VERSION
+
+echo "export LUVIT_VERSION=$LUVIT_VERSION" >> /etc/profile.d/luvm.sh
+echo 'luvm use $LUVIT_VERSION' >> /etc/profile.d/luvm.sh

@@ -11,22 +11,19 @@ CACHE_DIR=$2
 
 cd $BUILD_DIR
 
-LUVM_URL="https://github.com/dvv/luvit-luvm/archive/master.tar.gz"
-echo "-----> Fetching luvm from $LUVM_URL "
-mkdir -p /tmp/luvm
-pushd /tmp/luvm
+LUVIT_URL="http://luvit.io/dist/latest/ubuntu-latest/x86_64/luvit-bundled"
+LUI_URL="https://github.com/dvv/luvit-lui/raw/master/lui"
 
-wget $LUVM_URL
-tar xzvf master.tar.gz
-source luvit-luvm-master/luvm.sh 
-echo "-----> Installing luvit $LUVIT_VERSION "
+echo "-----> Fetching luvm from $LUVIT_URL "
 
-luvm install $LUVIT_VERSION
-luvm use $LUVIT_VERSION
+curl --silent -O --max-time 60 --location "$LUVIT_URL"
+chmod +x luvit-bundled
 
-mkdir -p /app/bin
-ln -s $(which luvit) /app/bin/luvit
+mkdir -p bin/
+mv luvit-bundled bin/luvit
 
-popd
+echo "-----> Fetching lui from $LUI_URL "
 
-rm -rf /tmp/luvm
+curl --silent -O --max-time 60 --location "$LUI_URL"
+chmod +x lui
+mv lui bin/lui

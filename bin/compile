@@ -24,4 +24,5 @@ curl --location "$LUI_URL" -o bin/lui
 chmod +x bin/lui
 
 echo "-----> Installing dependencies with lui "
+export PATH=$PATH:bin/
 bin/lui

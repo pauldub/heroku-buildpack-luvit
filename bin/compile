@@ -13,6 +13,7 @@ LUVIT_URL="http://luvit.io/dist/latest/ubuntu-latest/x86_64/luvit-bundled"
 LUI_URL="https://github.com/dvv/luvit-lui/raw/master/lui"
 
 echo "-----> Fetching luvit from $LUVIT_URL "
+mkdir -p bin/
 #curl -o bin/luvit --silent --max-time 60 --location "$LUVIT_URL" 
 curl "$LUVIT_URL" -o bin/luvit 
 chmod +x bin/luvit

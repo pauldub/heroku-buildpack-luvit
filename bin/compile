@@ -17,7 +17,7 @@ LUI_URL="https://github.com/dvv/luvit-lui/raw/master/lui"
 echo "-----> Fetching luvm from $LUVIT_URL "
 mkdir -p bin/
 
-curl --silenmvt -O --max-time 60 --location "$LUVIT_URL" -o bin/luvit
+curl --silent -O --max-time 60 --location "$LUVIT_URL" -o bin/luvit
 chmod +x bin/luvit
 
 echo "-----> Fetching lui from $LUI_URL "

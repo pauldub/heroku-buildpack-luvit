@@ -4,8 +4,6 @@
 set -e
 set -o pipefail
 
-[[ -n $LUVIT_VERSION ]] || LUVIT_VERSION="0.7.0"
-
 BUILD_DIR=$1
 CACHE_DIR=$2
 
@@ -14,13 +12,14 @@ cd $BUILD_DIR
 LUVIT_URL="http://luvit.io/dist/latest/ubuntu-latest/x86_64/luvit-bundled"
 LUI_URL="https://github.com/dvv/luvit-lui/raw/master/lui"
 
-echo "-----> Fetching luvm from $LUVIT_URL "
-mkdir -p bin/
-
-curl --silent -O --max-time 60 --location "$LUVIT_URL" -o bin/luvit
+echo "-----> Fetching luvit from $LUVIT_URL "
+curl -o bin/luvit --silent --max-time 60 --location "$LUVIT_URL" 
 chmod +x bin/luvit
 
 echo "-----> Fetching lui from $LUI_URL "
 
-curl --silent -O --max-time 60 --location "$LUI_URL" -o bin/lui
-chmod +x lui
+curl -o bin/lui --silent --max-time 60 --location "$LUI_URL" 
+chmod +x bin/lui
+
+echo "-----> Installing dependencies with lui "
+bin/lui

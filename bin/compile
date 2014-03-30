@@ -13,12 +13,13 @@ LUVIT_URL="http://luvit.io/dist/latest/ubuntu-latest/x86_64/luvit-bundled"
 LUI_URL="https://github.com/dvv/luvit-lui/raw/master/lui"
 
 echo "-----> Fetching luvit from $LUVIT_URL "
-curl -o bin/luvit --silent --max-time 60 --location "$LUVIT_URL" 
+#curl -o bin/luvit --silent --max-time 60 --location "$LUVIT_URL" 
+curl "$LUVIT_URL" -o bin/luvit 
 chmod +x bin/luvit
 
 echo "-----> Fetching lui from $LUI_URL "
 
-curl -o bin/lui --silent --max-time 60 --location "$LUI_URL" 
+curl --location "$LUI_URL" -o bin/lui 
 chmod +x bin/lui
 
 echo "-----> Installing dependencies with lui "

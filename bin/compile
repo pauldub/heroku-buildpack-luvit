@@ -25,4 +25,4 @@ chmod +x bin/lui
 
 echo "-----> Installing dependencies with lui "
 export PATH=$PATH:bin/
-bin/lui
+bin/lui || (echo "Lui had a problem" && true)

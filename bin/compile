@@ -15,15 +15,12 @@ LUVIT_URL="http://luvit.io/dist/latest/ubuntu-latest/x86_64/luvit-bundled"
 LUI_URL="https://github.com/dvv/luvit-lui/raw/master/lui"
 
 echo "-----> Fetching luvm from $LUVIT_URL "
-
-curl --silent -O --max-time 60 --location "$LUVIT_URL"
-chmod +x luvit-bundled
-
 mkdir -p bin/
-mv luvit-bundled bin/luvit
+
+curl --silenmvt -O --max-time 60 --location "$LUVIT_URL" -o bin/luvit
+chmod +x bin/luvit
 
 echo "-----> Fetching lui from $LUI_URL "
 
-curl --silent -O --max-time 60 --location "$LUI_URL"
+curl --silent -O --max-time 60 --location "$LUI_URL" -o bin/lui
 chmod +x lui
-mv lui bin/lui

@@ -5,6 +5,4 @@ cat <<EOF
 ---
 config_vars:
   PATH: bin:/usr/local/bin:/usr/bin:/bin
-default_process_type:
-	web: bin/luvit init.lua
 EOF
